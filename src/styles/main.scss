@@ -5,12 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  font-family: "Inter", sans-serif;
+  font-family: $mainFont;
 }
 
 body {
   min-width: 320px;
-  background: #F3F3FC; 
+  background: $bodyBg;
   font-size: 12px;
   line-height: 1.2;
 }
@@ -24,4 +24,60 @@ body {
 
 button {
   cursor: pointer;
+}
+
+input:not([type="submit"]),
+textarea,
+select{
+  width: 100%;
+  height: 47px;
+  margin-bottom: 12px;
+  padding: 0 12px;
+  border: 1px solid #8B97B5;
+  font-family: $mainFont;
+  font-size: 14px;
+  color: $black;
+  border-radius: 10px;
+  background: transparent;
+  @include placeholder {
+    font-family: $mainFont;
+    color: #8B97B5;
+  }
+}
+
+textarea {
+  padding: 15px 12px;
+  height: 94px;
+  resize: none;
+}
+
+select {
+  appearance: none;
+}
+
+.heading {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+select {
+  background: url('@/assets/icons/select.svg') center right 12px no-repeat;
+}
+
+
+.btn {
+  background: $blue;
+  border: 0;
+  padding: 0 17px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

@@ -1,1 +1,13 @@
 $blue: #175FFF;
+$white: #fff;
+$black: #000;
+$bodyBg: #F3F3FC;
+
+$mainFont: "Inter", sans-serif;
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}

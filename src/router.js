@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './components/HomePage/HomePage.vue';
-import AddCard from './components/AddCard.vue';
+import AddCard from './components/AddCard/AddCard.vue';
 
 const routes = [
   {
