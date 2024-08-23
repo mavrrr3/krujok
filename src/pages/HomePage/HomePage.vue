@@ -60,8 +60,8 @@
 
 
 <script>
-import Header from '@/components/HomePage/Header.vue';
-import Card from '@/components/HomePage/Card.vue';
+import Header from '@/pages/HomePage/Header.vue';
+import Card from '@/pages/HomePage/Card.vue';
 
 import folderIcon from '@/assets/icons/folder.svg';
 import queueIcon from '@/assets/icons/queue.svg';

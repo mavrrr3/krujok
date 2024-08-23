@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import AddCardHeader from '@/components/AddCard/AddCardHeader.vue';
-import AddCardForm from '@/components/AddCard/AddCardForm.vue';
+import AddCardHeader from '@/pages/AddCard/AddCardHeader.vue';
+import AddCardForm from '@/pages/AddCard/AddCardForm.vue';
 export default {
   name: "AddCard",
   components: {
@@ -22,6 +22,6 @@ export default {
 
 <style lang="scss">
 .add-card__container {
-  padding-bottom: 66px;
+  padding-bottom: 66px !important;
 }
 </style>

@@ -80,4 +80,10 @@ select {
   align-items: center;
   justify-content: center;
   text-align: center;
+  text-decoration: none;
+  &-exit {
+    background: transparent;
+    border: 1px solid #FD5959;
+    color: #000;
+  }
 }

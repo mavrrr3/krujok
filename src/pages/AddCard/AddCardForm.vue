@@ -34,7 +34,7 @@
 
 
 <script>
-import AddCardUsers from "@/components/AddCard/AddCardUsers.vue";
+import AddCardUsers from "@/pages/AddCard/AddCardUsers.vue";
 import './AddCardForm.scss';
 export default {
   name: 'AddCardForm',

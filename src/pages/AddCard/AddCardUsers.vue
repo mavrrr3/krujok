@@ -1,5 +1,5 @@
 <template>
-  <h4 class="heading">Участинки</h4>
+  <h4 class="heading">Участники</h4>
   <AddCardSearch />
   <ul class="users__list">
     <li v-for="(item, index) in userList" :key="index">
@@ -12,7 +12,7 @@
 
 <script>
 
-import AddCardSearch from "@/components/AddCard/AddCardSearch.vue";
+import AddCardSearch from "@/pages/AddCard/AddCardSearch.vue";
 import User from "@/components/User.vue";
 import photoImg from '@/assets/images/card-1.png';
 export default {
