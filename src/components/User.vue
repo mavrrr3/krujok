@@ -22,9 +22,21 @@
           <span v-else-if="status === 3">Отправлено</span>
         </div>
       </div>
-      <div class="user__count">Количество дежурств: {{ count }}</div>
+      <div v-if="role === ''" class="user__count">Количество дежурств: {{ count }}</div>
     </div>
-    <button class="user__regroup">
+    <button v-if="role === 'edit'" class="user__regroup">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 13 13">
+        <path fill="#8B97B5" d="M6.423 2.761.505 8.68a.505.505 0 0 0-.145.303l-.357 3.215a.505.505 0 0 0 .558.558l3.217-.358a.505.505 0 0 0 .303-.145l5.916-5.917-3.574-3.574Zm5.891-.887-1.43-1.43a1.516 1.516 0 0 0-2.144 0L7.137 2.047l3.574 3.574 1.603-1.603a1.516 1.516 0 0 0 0-2.144Z"/>
+      </svg>
+    </button>
+    <button v-else-if="role === 'add'" class="user__regroup">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+        <circle cx="10" cy="10" r="10" fill="#175FFF"/>
+        <rect width="1.481" height="9.63" x="9.259" y="5.185" fill="#fff" rx=".741"/>
+        <rect width="1.481" height="9.63" x="14.815" y="9.259" fill="#fff" rx=".741" transform="rotate(90 14.815 9.26)"/>
+      </svg>
+    </button>
+    <button v-else class="user__regroup">
       <img :src="reGroupIcon" alt="">
     </button>
   </div>
@@ -48,6 +60,7 @@ export default {
     date: String,
     status: Number,
     count: String,
+    role: String,
   },
   name: 'User',
   methods: {
@@ -117,7 +130,6 @@ export default {
     align-items: center;
     gap: 5px;
     color: #8B97B5;
-    margin-bottom: 6px;
   }
   &__status {
     padding: 2px 6px;
@@ -126,6 +138,7 @@ export default {
     text-transform: uppercase;
     color: $white;
     border-radius: 60px;
+    margin-top: 6px;
     &.green {
       background: #00DB4A;
     }

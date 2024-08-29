@@ -22,7 +22,7 @@ body {
   padding: 0 16px;
 }
 
-button {
+button, select {
   cursor: pointer;
 }
 
@@ -86,4 +86,11 @@ select {
     border: 1px solid #FD5959;
     color: #000;
   }
+}
+
+.block {
+  background: $white;
+  padding: 16px 12px;
+  border-radius: 10px;
+  position: relative;
 }

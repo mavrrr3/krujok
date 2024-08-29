@@ -1,0 +1,40 @@
+.booking {
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 0;
+    background: transparent;
+    margin-bottom: 12px;
+    h4 {
+      margin: 0;
+    }
+    &.hidden {
+      svg {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &__btn-group {
+    display: grid;
+    grid-template-columns: 1fr 40px 40px 40px 40px;
+    gap: 12px;
+    button:not(.btn) {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: $white;
+      border: 0;
+      margin-bottom: 12px;
+    }
+  }
+  &__users {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
