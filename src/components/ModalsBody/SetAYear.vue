@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'SetATime',
+  name: 'SetAYear',
   data() {
     return {
       isShowBlock: true,
@@ -15,7 +15,10 @@ export default {
 </script>
 
 <template>
-  <h4 class="heading">Назначить время</h4>
+  <h4 class="heading">Заполнить на весь год</h4>
+  <p class="descr">
+    Введите ваше рабочее время, оно заполнится на весь год с учетом праздников и выходных по производственному календарю
+  </p>
   <form action="">
     <div class="form-time">
       <input type="text" value="12:00">

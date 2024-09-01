@@ -1,67 +1,9 @@
-<template>
-  <Header />
-
-  <div class="container">
-    <div class="hp__content">
-      <div class="hp__tabs">
-        <button
-            v-for="tab in tabs"
-            :key="tab"
-            @click="selectedTab = tab"
-            :class="{ active: selectedTab === tab }">
-          {{ tab }}
-        </button>
-      </div>
-      <div class="tab-content">
-        <div v-if="selectedTab === 'Все'">
-          <ul class="hp__cards">
-            <li v-for="(item,index) in allCards" :key="index">
-              <Card :title=item.title :icon="item.icon" :text="item.text" :subtitle="item.subtitle" :photo="item.photo" />
-            </li>
-          </ul>
-        </div>
-        <div v-if="selectedTab === 'Мои кружки'">
-          <ul class="hp__cards">
-            <li v-for="(item,index) in myCards" :key="index">
-              <Card :title=item.title :icon="item.icon" :text="item.text" :subtitle="item.subtitle" :photo="item.photo" />
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <router-link class="add-card" to="/add-card">
-    <img :src="addCardIcon" alt="">
-  </router-link>
-
-</template>
-
-
-<style lang="scss">
-.add-card {
-  position: fixed;
-  right: 29px;
-  bottom: 48px;
-  width: 54px;
-  height: 54px;
-  background: #175FFF;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-}
-</style>
-
-
 <script>
 import Header from '@/pages/HomePage/Header.vue';
 import Card from '@/pages/HomePage/Card.vue';
+
+import Modal from "@/components/Modal/Modal.vue";
+import Reminder from "@/components/ModalsBody/Reminder.vue";
 
 import folderIcon from '@/assets/icons/folder.svg';
 import queueIcon from '@/assets/icons/queue.svg';
@@ -97,7 +39,77 @@ export default {
   name: 'HomePage',
   components: {
     Header,
-    Card
+    Card,
+    Modal
   },
+  methods: {
+    showModal() {
+      this.$refs.modal.openModal(Reminder);
+    }
+  }
 }
 </script>
+
+<template>
+  <Header />
+
+  <div class="container">
+    <div class="hp__content">
+      <div class="hp__tabs">
+        <button
+            v-for="tab in tabs"
+            :key="tab"
+            @click="selectedTab = tab"
+            :class="{ active: selectedTab === tab }">
+          {{ tab }}
+        </button>
+      </div>
+      <div class="tab-content">
+        <div v-if="selectedTab === 'Все'">
+          <ul class="hp__cards">
+            <li v-for="(item,index) in allCards" :key="index">
+              <Card :title=item.title :icon="item.icon" :text="item.text" :subtitle="item.subtitle" :photo="item.photo" />
+            </li>
+          </ul>
+        </div>
+        <div v-if="selectedTab === 'Мои кружки'">
+          <ul class="hp__cards">
+            <li v-for="(item,index) in myCards" :key="index">
+              <Card :title=item.title :icon="item.icon" :text="item.text" :subtitle="item.subtitle" :photo="item.photo" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <button @click="showModal" class="btn">reminder</button>
+
+  </div>
+  <router-link class="add-card" to="/add-card">
+    <img :src="addCardIcon" alt="">
+  </router-link>
+
+  <Modal ref="modal" />
+
+</template>
+
+
+<style lang="scss">
+.add-card {
+  position: fixed;
+  right: 29px;
+  bottom: 48px;
+  width: 54px;
+  height: 54px;
+  background: #175FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+</style>
