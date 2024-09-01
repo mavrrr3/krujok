@@ -3,6 +3,7 @@ import Home from '@/pages/HomePage/HomePage.vue';
 import AddCard from '@/pages/AddCard/AddCard.vue';
 import Queue from "@/pages/Queue/Queue.vue";
 import SignUp from "@/pages/SignUp/SignUp.vue";
+import ToDo from "@/pages/ToDo/ToDo.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/sign-up',
     name: 'Sign Up',
     component: SignUp
+  },
+  {
+    path: '/todo',
+    name: 'To do',
+    component: ToDo
   }
 ];
 
