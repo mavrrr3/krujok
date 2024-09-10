@@ -21,7 +21,11 @@
         <input type="text" name="address" placeholder="Введите адрес">
       </div>
       <Services />
+      <div class="block mb20">
+      <h3 class="heading">График работы</h3>
       <Calendar />
+      </div>
+    
       <Booking />
     </div>
   </div>
@@ -32,7 +36,7 @@ import './SignUp.scss';
 import Gallery from "@/pages/SignUp/gallery.vue";
 import Services from "@/pages/SignUp/Services/Services.vue";
 import Booking from "@/pages/SignUp/Booking/Booking.vue";
-import Calendar from "@/pages/SignUp/Calendar/Calendar.vue";
+import Calendar from "@/components/Calendar/Calendar.vue";
 import AddCardHeader from "@/pages/AddCard/AddCardHeader.vue";
 
 export default {
