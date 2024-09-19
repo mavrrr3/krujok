@@ -31,6 +31,13 @@
       border-right: 0;
     }
 
+    &.active {
+      background: #175FFF;
+      .calendar__date {
+        color: #fff;
+      }
+    }
+
     &.prev-month,
     &.next-month {
       color: #DADEE8;
@@ -40,6 +47,8 @@
   &__date {
     font-size: 10px;
     line-height: 1;
+    position: relative;
+    z-index: 2;
   }
 
   &__info {
@@ -57,5 +66,18 @@
     display: flex;
     background: transparent;
     border: 0;
+  }
+  &__event {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #F0F0FF;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 6px 5px;
+    font-size: 8px;
   }
 }
