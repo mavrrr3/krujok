@@ -92,6 +92,9 @@ select {
     border: 1px solid $blue;
     color: #000;
   }
+  &-red {
+    background: #FD5959;
+  }
 }
 
 .block {

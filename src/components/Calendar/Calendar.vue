@@ -84,14 +84,14 @@ export default {
     handleDayClick(day) {
       const year = this.currentYear;
       const month = this.currentMonth + 1;
-      const dateString = `${year}-${String(month).padStart(2, '0')}-${String(day.date).padStart(2, '0')}`;
-      console.log(dateString);
 
       const dayIndex = this.activeDays.findIndex(activeDay =>
           activeDay.date === day.date &&
           activeDay.month === month &&
           activeDay.year === year
       );
+
+      console.log(this.activeDays);
 
       if (dayIndex > -1) {
         this.activeDays.splice(dayIndex, 1);
@@ -157,6 +157,14 @@ export default {
         </div>
       </div>
     </div>
+
+
+    <div class="calendar__btn-group">
+      <button disabled class="btn">Назначить время</button>
+      <button disabled class="btn btn-red">Очистить</button>
+    </div>
+
+    <button class="btn btn-white">Заполнить на весь год</button>
 
 
   </div>

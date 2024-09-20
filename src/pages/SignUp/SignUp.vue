@@ -1,5 +1,4 @@
 <template>
-  <AddCardHeader />
   <div class="container">
     <div class="sign-up">
       <div class="sign-up__info">
@@ -37,11 +36,10 @@ import Gallery from "@/pages/SignUp/gallery.vue";
 import Services from "@/pages/SignUp/Services/Services.vue";
 import Booking from "@/pages/SignUp/Booking/Booking.vue";
 import Calendar from "@/components/Calendar/Calendar.vue";
-import AddCardHeader from "@/pages/AddCard/AddCardHeader.vue";
 
 export default {
   name: 'SingUp',
-  components: {Calendar, Gallery, Services, Booking, AddCardHeader},
+  components: {Calendar, Gallery, Services, Booking},
   data() {
     return {
       modalData: {}

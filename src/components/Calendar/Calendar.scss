@@ -13,6 +13,8 @@
     grid-template-columns: repeat(7, 1fr);
     border: 1px solid #8B97B5;
     border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
   }
 
   &__item {
@@ -22,7 +24,6 @@
     padding: 5px;
     position: relative;
     color: #8B97B5;
-
     &:nth-child(-n+7) {
       border-top: 0;
     }
@@ -36,11 +37,23 @@
       .calendar__date {
         color: #fff;
       }
+      .calendar__event {
+        background: #175FFF;
+        color: #fff;
+      }
+      &.prev-month,
+      &.next-month {
+        .calendar__date {
+          color: #DADEE8 !important;
+        }
+      }
     }
 
     &.prev-month,
     &.next-month {
       color: #DADEE8;
+      pointer-events: none;
+      background: #fff !important;
     }
   }
 
@@ -79,5 +92,16 @@
     align-items: flex-end;
     padding: 6px 5px;
     font-size: 8px;
+  }
+
+  &__btn-group {
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    button[disabled] {
+      color: #fff !important;
+      background: #8B97B5 !important;`
+    }
   }
 }

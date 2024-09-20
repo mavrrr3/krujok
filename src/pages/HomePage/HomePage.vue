@@ -1,5 +1,5 @@
 <script>
-import Header from '@/pages/HomePage/Header.vue';
+// import Header from '@/pages/HomePage/Header.vue';
 import Card from '@/pages/HomePage/Card.vue';
 
 import Modal from "@/components/Modal/Modal.vue";
@@ -38,7 +38,7 @@ export default {
   },
   name: 'HomePage',
   components: {
-    Header,
+    // Header,
     Card,
     Modal
   },
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <Header />
+<!--  <Header />-->
 
   <div class="container">
     <div class="hp__content">
