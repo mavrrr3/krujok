@@ -27,7 +27,7 @@ export default {
     </div>
 
     <label for="" @click="toggleBlock" class="checkbox-label set-a-time-label">
-      Перерыв после записи
+      Перерыв
       <span class="checkbox-icon" :class="isShowBlock ? '' : 'hidden'">
         <span></span>
       </span>

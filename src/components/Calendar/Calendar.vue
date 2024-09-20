@@ -1,17 +1,19 @@
 <script>
 import './Calendar.scss';
+import Modal from "@/components/Modal/Modal.vue";
+import SetAYear from "@/components/ModalsBody/SetAYear.vue";
+import SetATime from "@/components/ModalsBody/SetATime.vue";
+
+import { calendarData } from "@/data/calendarData";
 
 export default {
   name: "Calendar",
+  components: {Modal},
   data() {
     return {
       currentDate: new Date(),
       daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      events: [
-        {date: '2024-09-10', title: 'Event 1'},
-        {date: '2024-09-15', title: 'Event 2'},
-        {date: '2024-09-25', title: 'Event 3'},
-      ],
+      calendarData,
       activeDays: [],
     };
   },
@@ -50,7 +52,7 @@ export default {
 
       for (let i = 1; i <= this.daysInCurrentMonth; i++) {
         const currentDateString = `${this.currentYear}-${String(this.currentMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-        const dayEvents = this.events.filter(event => event.date === currentDateString);
+        const dayEvents = this.calendarData.events.filter(event => event.date === currentDateString);
 
         totalDays.push({
           date: i,
@@ -73,6 +75,10 @@ export default {
       return totalDays;
     },
 
+    isButtonEnabled() {
+      return this.activeDays.length >= 1;
+    },
+
   },
   methods: {
     prevMonth() {
@@ -91,13 +97,24 @@ export default {
           activeDay.year === year
       );
 
-      console.log(this.activeDays);
-
       if (dayIndex > -1) {
         this.activeDays.splice(dayIndex, 1);
       } else {
         this.activeDays.push({date: day.date, month, year});
       }
+
+      console.log(this.activeDays);
+
+    },
+    clearCalendar() {
+      this.activeDays = [];
+    },
+    showSetAYearModal() {
+      this.$refs.modal.openModal(SetAYear);
+    },
+    showSetATimeModal() {
+      this.$refs.modal.openModal(SetATime);
+
     },
   },
 
@@ -151,8 +168,13 @@ export default {
       >
         <span class="calendar__date">{{ day.date }}</span>
         <div class="calendar__events" v-if="day.events.length">
-          <span v-for="(event, eIndex) in day.events" :key="eIndex" class="calendar__event">
-            {{ event.title }}
+          <span
+              v-for="(event, eIndex) in day.events"
+              :key="eIndex"
+              class="calendar__event"
+
+          >
+            {{event.startTime}} <br> {{event.endTime}}
           </span>
         </div>
       </div>
@@ -160,12 +182,16 @@ export default {
 
 
     <div class="calendar__btn-group">
-      <button disabled class="btn">Назначить время</button>
-      <button disabled class="btn btn-red">Очистить</button>
+      <button
+          :disabled="!isButtonEnabled"
+          class="btn"
+          @click="showSetATimeModal"
+      >Назначить время</button>
+      <button :disabled="!isButtonEnabled" class="btn btn-red" @click="clearCalendar">Очистить</button>
     </div>
 
-    <button class="btn btn-white">Заполнить на весь год</button>
-
+    <button class="btn btn-white" @click="showSetAYearModal();">Заполнить на весь год</button>
 
   </div>
+  <Modal ref="modal" />
 </template>
