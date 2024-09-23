@@ -1,6 +1,14 @@
 <script>
+
+import {mapMutations} from 'vuex';
 export default {
   name: 'SetATime',
+  props: {
+    calendarDate: {
+      type: Array,
+      required: false,
+    }
+  },
   data() {
     return {
       isShowBlock: true,
@@ -11,9 +19,34 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['ADD_EVENT']),
     toggleBlock() {
       this.isShowBlock = !this.isShowBlock;
     },
+    updateCalendar(event) {
+      event.preventDefault();
+
+      this.calendarDate.forEach(event => {
+        const newEvent = {
+          date: event.year + '-' +
+              String(event.month).padStart(2, '0') + '-' +
+              String(event.date).padStart(2, '0'),
+          startTime: this.startTime,
+          endTime: this.endTime,
+          breakStart: this.breakStartTime,
+          breakEnd: this.breakEndTime,
+        };
+        this.ADD_EVENT(newEvent);
+        this.$store.dispatch('toggleActive', false);
+      })
+
+
+      // TODO: data to - modal - calendar
+      // TODO: isActive false
+      // TODO: activeDays clear array
+
+
+    }
   }
 }
 </script>
@@ -40,7 +73,12 @@ export default {
       <input type="text" v-model="breakStartTime">
     </div>
 
-    <button class="btn">Сохранить</button>
+    <button
+        class="btn"
+        @click="updateCalendar"
+    >
+      Сохранить
+    </button>
   </form>
 </template>
 

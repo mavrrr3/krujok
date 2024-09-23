@@ -2,6 +2,12 @@
 
 export default {
   name: 'Modal',
+  props: {
+    calendarDate: {
+      type: Array,
+      required: false,
+    }
+  },
   data() {
     return {
       isVisible: false,
@@ -31,6 +37,7 @@ export default {
         </button>
         <component
             :is="currentComponent"
+            :calendarDate="calendarDate"
         />
       </div>
     </div>
