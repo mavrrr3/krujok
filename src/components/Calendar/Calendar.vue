@@ -13,7 +13,6 @@ export default {
     return {
       currentDate: new Date(),
       daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      activeDays: [],
     };
   },
 
@@ -81,7 +80,7 @@ export default {
     },
 
     isButtonEnabled() {
-      return this.activeDays.length >= 1;
+      return this.$store.getters.activeDays.length >= 1;
     },
 
   },
@@ -93,33 +92,35 @@ export default {
       this.currentDate = new Date(this.currentYear, this.currentMonth + 1, 1);
     },
     handleDayClick(day) {
-      this.$store.dispatch('toggleActive', true);
       const year = this.currentYear;
       const month = this.currentMonth + 1;
 
-      const dayIndex = this.activeDays.findIndex(activeDay =>
+      const dayIndex = this.$store.getters.activeDays.findIndex(activeDay =>
           activeDay.date === day.date &&
           activeDay.month === month &&
           activeDay.year === year
       );
 
       if (dayIndex > -1) {
-        this.activeDays.splice(dayIndex, 1);
+        this.$store.getters.activeDays.splice(dayIndex, 1);
       } else {
-        this.activeDays.push({date: day.date, month, year});
+        this.$store.getters.activeDays.push({date: day.date, month, year});
       }
 
     },
     clearCalendar() {
-      this.activeDays = [];
+      this.$store.dispatch('clearActiveDays');
     },
     showSetAYearModal() {
       this.$refs.modal.openModal(SetAYear);
+      // this.$store.dispatch('toggleModal', true);
     },
     showSetATimeModal() {
-      this.$refs.modal.openModal(SetATime);
-
+      // this.$refs.modal.openModal(SetATime);
+      this.$store.dispatch('toggleModal', true);
+      this.$store.dispatch('setModalComponent', SetATime);
     },
+
   },
 
 }
@@ -163,7 +164,7 @@ export default {
           :class="{
          'prev-month': day.isPrevMonth,
          'next-month': day.isNextMonth,
-         'active': !day.isNextMonth && activeDays.some(activeDay =>
+         'active': !day.isNextMonth && this.$store.getters.activeDays.some(activeDay =>
            activeDay.date === day.date &&
            activeDay.month === (this.currentMonth + 1) &&
            activeDay.year === this.currentYear
@@ -210,6 +211,6 @@ export default {
   </div>
   <Modal
       ref="modal"
-      :calendarDate="this.activeDays"
+      :calendarDate="this.$store.getters.activeDays"
   />
 </template>

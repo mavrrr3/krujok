@@ -8,26 +8,21 @@ export default {
       required: false,
     }
   },
-  data() {
-    return {
-      isVisible: false,
-      currentComponent: null,
-    }
+  methods: {
+    closeModal() {
+      this.$store.dispatch('toggleModal', false);
+      this.$store.dispatch('resetModalComponent');
+    },
   },
-    methods: {
-      openModal(component = {}) {
-        this.currentComponent = component;
-        this.isVisible = true;
-      },
-      closeModal() {
-        this.isVisible = false;
-        this.currentComponent = null;
-      },
+  computed: {
+    currentModalComponent() {
+      return this.$store.getters.currentModalComponent;
     }
+  }
 }
 </script>
 <template>
-  <div v-if="isVisible" class="modal">
+  <div v-if="this.$store.getters.modalVisible" class="modal">
     <div class="container">
       <div class="modal-content">
         <button class="modal-close" @click="closeModal">
@@ -36,7 +31,7 @@ export default {
           </svg>
         </button>
         <component
-            :is="currentComponent"
+            :is="currentModalComponent"
             :calendarDate="calendarDate"
         />
       </div>
@@ -53,6 +48,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 100;
+
   &-overlay {
     background: rgba(#000, .6);
     width: 100%;
@@ -61,6 +57,7 @@ export default {
     top: 0;
     position: absolute;
   }
+
   .container {
     height: 100%;
     display: flex;
@@ -69,6 +66,7 @@ export default {
     z-index: 2;
   }
 }
+
 .modal-content {
   background: $white;
   min-width: 100%;
@@ -80,6 +78,7 @@ export default {
   transform: translateX(0);
   transition: transform 1s ease;
 }
+
 .modal-close {
   position: absolute;
   top: -15px;

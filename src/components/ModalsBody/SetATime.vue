@@ -26,6 +26,7 @@ export default {
     updateCalendar(event) {
       event.preventDefault();
 
+
       this.calendarDate.forEach(event => {
         const newEvent = {
           date: event.year + '-' +
@@ -37,15 +38,11 @@ export default {
           breakEnd: this.breakEndTime,
         };
         this.ADD_EVENT(newEvent);
-        this.$store.dispatch('toggleActive', false);
+        this.$store.dispatch('clearActiveDays');
       })
 
-
-      // TODO: data to - modal - calendar
-      // TODO: isActive false
-      // TODO: activeDays clear array
-
-
+      this.$store.dispatch('toggleModal', false);
+      this.$store.dispatch('resetModalComponent');
     }
   }
 }
