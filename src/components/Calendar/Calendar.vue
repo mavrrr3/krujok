@@ -112,11 +112,10 @@ export default {
       this.$store.dispatch('clearActiveDays');
     },
     showSetAYearModal() {
-      this.$refs.modal.openModal(SetAYear);
-      // this.$store.dispatch('toggleModal', true);
+      this.$store.dispatch('toggleModal', true);
+      this.$store.dispatch('setModalComponent', SetAYear);
     },
     showSetATimeModal() {
-      // this.$refs.modal.openModal(SetATime);
       this.$store.dispatch('toggleModal', true);
       this.$store.dispatch('setModalComponent', SetATime);
     },

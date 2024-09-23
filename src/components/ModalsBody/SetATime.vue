@@ -38,9 +38,9 @@ export default {
           breakEnd: this.breakEndTime,
         };
         this.ADD_EVENT(newEvent);
-        this.$store.dispatch('clearActiveDays');
       })
 
+      this.$store.dispatch('clearActiveDays');
       this.$store.dispatch('toggleModal', false);
       this.$store.dispatch('resetModalComponent');
     }
