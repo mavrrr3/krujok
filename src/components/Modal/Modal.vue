@@ -1,7 +1,7 @@
 <script>
+
 export default {
   name: 'Modal',
-
   data() {
     return {
       isVisible: false,
@@ -16,7 +16,7 @@ export default {
       closeModal() {
         this.isVisible = false;
         this.currentComponent = null;
-      }
+      },
     }
 }
 </script>
@@ -29,7 +29,9 @@ export default {
             <path fill="#8B97B5" d="m0 0 5 5 5-5H0Z"/>
           </svg>
         </button>
-        <component :is="currentComponent" />
+        <component
+            :is="currentComponent"
+        />
       </div>
     </div>
     <div class="modal-overlay" @click="closeModal"></div>

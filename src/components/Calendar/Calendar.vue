@@ -4,7 +4,7 @@ import Modal from "@/components/Modal/Modal.vue";
 import SetAYear from "@/components/ModalsBody/SetAYear.vue";
 import SetATime from "@/components/ModalsBody/SetATime.vue";
 
-import { calendarData } from "@/data/calendarData";
+import { mapGetters } from 'vuex';
 
 export default {
   name: "Calendar",
@@ -13,11 +13,15 @@ export default {
     return {
       currentDate: new Date(),
       daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      calendarData,
       activeDays: [],
     };
   },
+
   computed: {
+    ...mapGetters(['getEvents']),
+    events() {
+      return this.getEvents;
+    },
     currentYear() {
       return this.currentDate.getFullYear();
     },
@@ -52,7 +56,9 @@ export default {
 
       for (let i = 1; i <= this.daysInCurrentMonth; i++) {
         const currentDateString = `${this.currentYear}-${String(this.currentMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-        const dayEvents = this.calendarData.events.filter(event => event.date === currentDateString);
+        const dayEvents = this.getEvents.slice().filter(event => event.date === currentDateString);
+
+
 
         totalDays.push({
           date: i,
@@ -83,6 +89,7 @@ export default {
   methods: {
     prevMonth() {
       this.currentDate = new Date(this.currentYear, this.currentMonth - 1, 1);
+      console.log(this.getEvents);
     },
     nextMonth() {
       this.currentDate = new Date(this.currentYear, this.currentMonth + 1, 1);
@@ -102,8 +109,6 @@ export default {
       } else {
         this.activeDays.push({date: day.date, month, year});
       }
-
-      console.log(this.activeDays);
 
     },
     clearCalendar() {
@@ -167,16 +172,16 @@ export default {
        }"
       >
         <span class="calendar__date">{{ day.date }}</span>
-        <div class="calendar__events" v-if="day.events.length">
-          <span
-              v-for="(event, eIndex) in day.events"
-              :key="eIndex"
-              class="calendar__event"
+<!--        <div class="calendar__events" v-if="day.events.length">-->
+<!--          <span-->
+<!--              v-for="(event, eIndex) in day.events"-->
+<!--              :key="eIndex"-->
+<!--              class="calendar__event"-->
 
-          >
-            {{event.startTime}} <br> {{event.endTime}}
-          </span>
-        </div>
+<!--          >-->
+<!--            {{event.startTime}} <br> {{event.endTime}}-->
+<!--          </span>-->
+<!--        </div>-->
       </div>
     </div>
 
@@ -193,5 +198,7 @@ export default {
     <button class="btn btn-white" @click="showSetAYearModal();">Заполнить на весь год</button>
 
   </div>
-  <Modal ref="modal" />
+  <Modal
+      ref="modal"
+  />
 </template>

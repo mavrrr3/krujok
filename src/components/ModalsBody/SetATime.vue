@@ -13,7 +13,7 @@ export default {
   methods: {
     toggleBlock() {
       this.isShowBlock = !this.isShowBlock;
-    }
+    },
   }
 }
 </script>
@@ -21,7 +21,6 @@ export default {
 <template>
   <h4 class="heading">Назначить время</h4>
   <form action="">
-
     <div class="form-time">
       <input type="text" v-model="startTime">
       <span>-</span>
