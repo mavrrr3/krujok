@@ -3,9 +3,13 @@ import './Booking.scss';
 
 import Search from "@/components/Search.vue";
 import User from "@/components/User.vue";
+
+import Modal from "@/components/Modal/Modal.vue";
+import InviteModal from "@/components/ModalsBody/Invite.vue";
+
 export default {
   name: 'Booking',
-  components: {Search, User},
+  components: {Search, User, Modal},
   data() {
     return {
       isVisible: true,
@@ -25,6 +29,11 @@ export default {
     toggleBlock() {
       this.isVisible = !this.isVisible
     },
+    inviteModal(e) {
+      e.preventDefault();
+      this.$store.dispatch('toggleModal', true);
+      this.$store.dispatch('setModalComponent', InviteModal);
+    },
   }
 }
 </script>
@@ -40,7 +49,7 @@ export default {
     <div class="booking__content" v-if="isVisible">
       <Search />
       <div class="booking__btn-group">
-        <button class="btn">Пригласить</button>
+        <button class="btn" @click="inviteModal">Пригласить</button>
         <button>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="none" viewBox="0 0 24 22">
             <path fill="#8B97B5" d="m21.217 10.772-2.505 2.506a1.106 1.106 0 0 1-1.558 0c-.43-.43-.43-1.13 0-1.56l2.505-2.506a4.127 4.127 0 0 0 1.223-2.934 4.162 4.162 0 0 0-1.059-2.786c-.717-.798-1.738-1.255-2.875-1.286l-.126-.001a4.64 4.64 0 0 0-3.267 1.347L11.27 5.836c-.43.43-1.13.429-1.56 0a1.1 1.1 0 0 1-.322-.78 1.1 1.1 0 0 1 .322-.78l2.284-2.284a6.886 6.886 0 0 1 5.01-1.99c1.75.048 3.332.763 4.457 2.015a6.367 6.367 0 0 1 1.623 4.26 6.318 6.318 0 0 1-1.868 4.495Zm-6.942 6.942-2.298 2.3a6.812 6.812 0 0 1-4.997 1.983c-1.745-.048-3.324-.764-4.446-2.016a6.364 6.364 0 0 1-1.62-4.258 6.247 6.247 0 0 1 1.857-4.504l2.505-2.505c.208-.209.485-.323.78-.323a1.1 1.1 0 0 1 1.102 1.103 1.1 1.1 0 0 1-.323.78L4.33 12.779a4.075 4.075 0 0 0-1.21 2.934c0 1.043.375 2.037 1.056 2.796.714.797 1.732 1.253 2.865 1.284 1.244.02 2.492-.454 3.378-1.34l2.298-2.299a1.105 1.105 0 0 1 1.56 0c.428.43.428 1.13-.002 1.56Z"/>
@@ -92,5 +101,9 @@ export default {
     </div>
 
   </div>
+
+  <Modal
+      ref="modal"
+  />
 
 </template>
