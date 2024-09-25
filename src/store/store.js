@@ -10,12 +10,17 @@ const store = createStore({
         activeDays: [],
         modalVisible: false,
         currentModalComponent: null,
+        services: [
+            {name: 'Услуги стоматолога', price: '2000 руб.', duration: '30 мин', break: '30 мин'},
+            {name: 'Услуги стоматолога', price: '2000 руб.', duration: '30 мин', break: '30 мин'},
+        ]
     },
     getters: {
         getEvents: (state) => state.events,
         activeDays: (state) => state.activeDays,
         modalVisible: (state) => state.modalVisible,
         currentModalComponent: (state) => state.currentModalComponent,
+        Services: (state) => state.services
     },
     mutations: {
         ADD_EVENT(state, newEvent) {
@@ -32,7 +37,10 @@ const store = createStore({
         },
         RESET_MODAL_COMPONENT(state) {
             state.currentModalComponent = null;
-        }
+        },
+        ADD_SERVICE(state, newService) {
+            state.services.push(newService);
+        },
     },
     actions: {
         clearActiveDays({ commit }) {
