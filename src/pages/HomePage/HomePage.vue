@@ -3,7 +3,6 @@
 import Card from '@/pages/HomePage/Card.vue';
 
 import Modal from "@/components/Modal/Modal.vue";
-import Reminder from "@/components/ModalsBody/Reminder.vue";
 
 import folderIcon from '@/assets/icons/folder.svg';
 import queueIcon from '@/assets/icons/queue.svg';
@@ -42,11 +41,6 @@ export default {
     Card,
     Modal
   },
-  methods: {
-    showModal() {
-      this.$refs.modal.openModal(Reminder);
-    }
-  }
 }
 </script>
 
@@ -81,8 +75,6 @@ export default {
         </div>
       </div>
     </div>
-
-    <button @click="showModal" class="btn">reminder</button>
 
   </div>
   <router-link class="add-card" to="/add-card">
