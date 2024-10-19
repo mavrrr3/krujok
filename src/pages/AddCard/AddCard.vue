@@ -1,5 +1,4 @@
 <template>
-  <AddCardHeader />
 
   <div class="container add-card__container">
     <AddCardForm />
@@ -8,12 +7,10 @@
 </template>
 
 <script>
-import AddCardHeader from '@/pages/AddCard/AddCardHeader.vue';
 import AddCardForm from '@/pages/AddCard/AddCardForm.vue';
 export default {
   name: "AddCard",
   components: {
-    AddCardHeader,
     AddCardForm
   }
 }

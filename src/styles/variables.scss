@@ -1,13 +1,66 @@
-$blue: #175FFF;
+$blue: #175fff;
 $white: #fff;
 $black: #000;
-$bodyBg: #F3F3FC;
+$bodyBg: #f3f3fc;
 
 $mainFont: "Inter", sans-serif;
 
 @mixin placeholder {
-  &::-webkit-input-placeholder {@content}
-  &:-moz-placeholder           {@content}
-  &::-moz-placeholder          {@content}
-  &:-ms-input-placeholder      {@content}
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+body,
+html {
+  height: 100%;
+  user-select: none;
+}
+
+body {
+  color: var(--tg-theme-text-color);
+  background: var(--tg-theme-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hint {
+  color: var(--tg-theme-hint-color);
+}
+
+.link {
+  color: var(--tg-theme-link-color);
+}
+
+.button {
+  background: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+  border: none;
+  font-size: 18px;
+}
+
+.button:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+#usercard {
+  text-align: center;
+}
+
+.error {
+  margin-top: calc(var(--tg-viewport-height) / 3.5);
+}
+
+li {
+  cursor: pointer;
 }
