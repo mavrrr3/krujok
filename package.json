@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "clean": "rimraf dist",
+    "build:watch": "yarn clean && vue-cli-service build --watch",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

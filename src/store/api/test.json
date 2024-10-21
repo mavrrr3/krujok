@@ -1,0 +1,44 @@
+[
+    {
+        "id": 4,
+        "owner_id": null,
+        "name": "\u0417\u0430\u043a\u0443\u043f\u043a\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432",
+        "type_id": 2,
+        "admin_user_id": 1,
+        "share_text_template": "\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0439\u0441\u044f \u043a \u043a\u0440\u0443\u0436\u043a\u0443 \"@name\" \u0438 \u0431\u0443\u0434\u044c \u0441\u0447\u0430\u0441\u0442\u043b\u0438\u0432!",
+        "hash": "ZEUxS5QzgIWbflrn",
+        "created_at": "2024-08-15 18:45:57",
+        "updated_at": "2024-09-28 20:09:22",
+        "moderator": 1
+    }
+]
+
+import folderIcon from '@/assets/icons/folder.svg';
+import queueIcon from '@/assets/icons/queue.svg';
+import calendarIcon from '@/assets/icons/calendar.svg';
+import groupIcon from '@/assets/icons/group.svg';
+import checkIcon from '@/assets/icons/check.svg';
+import photo1 from '@/assets/images/card-1.png';
+import photo2 from '@/assets/images/card-2.png';
+
+const loadHomeGroups = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve([
+                { title: '888Парикмахерская Цирюльник', text: '14 кружков', icon: folderIcon
+                },
+                { title: '33Очередь уборки', text: 'Очередь из 14 человек', icon: queueIcon, photo: photo1
+                },
+                { title: 'Елена Викторовна Стоматолог', text: 'Запись', icon: calendarIcon
+                },
+                { title: 'Кружок программирования', text: 'Запись в группу', icon: groupIcon, photo: photo2
+                },
+                { title: 'Разработка приложения', text: 'Чеклист', icon: checkIcon
+                },
+                { title: 'Кружок состоящий в группе', text: 'Очередь из 14 человек', icon: queueIcon, subtitle: '/ Парикмахерская Цирюльник'
+                },
+            ])
+        },
+        1000)
+    })
+}
