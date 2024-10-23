@@ -6,6 +6,9 @@ export default {
     const { isDarkTheme } = useTelegramTheme();
     return { isDarkTheme };
   },
+  mounted() {
+        window.Telegram.WebApp.expand();
+  },
 };
 </script>
 
@@ -13,10 +16,3 @@ export default {
     <router-view />
 </template>
 
-<script>
-export default {
-    mounted() {
-        window.Telegram.WebApp.expand();
-    },
-}
-</script>

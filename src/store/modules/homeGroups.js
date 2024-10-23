@@ -29,7 +29,7 @@ const mutations = {
 };
 
 const actions = {
-    async fetchHomeGroups({ commit, rootState }) {
+    async fetchHomeGroups({ commit }) {
         commit('SET_LOADING', true);
         commit('SET_ERROR', null);
         try {
