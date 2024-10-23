@@ -1,5 +1,5 @@
 export default {
-    apiDomain: 'https://api.ubric.ru/',
+    apiDomain: 'https://b.ubric.ru/',
     shareUrl: 'https://t.me/kruzhkov_bot?start=',
     shareTextTemplate: 'Подключайся к кружку "@name" и будь счастлив!',
     shareButtonText: 'Пригласить',

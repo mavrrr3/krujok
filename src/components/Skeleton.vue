@@ -1,7 +1,7 @@
 <template>
     <div class="skeleton" :style="styles"></div>
 </template>
-  
+
 <script>
 export default {
     props: {
