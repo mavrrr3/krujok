@@ -4,6 +4,7 @@ import router from './app/router';
 import store from './store/index';
 
 import '@/styles/main.scss';
+import '@/styles/darkTheme.scss';
 
 createApp(App)
   .use(router)

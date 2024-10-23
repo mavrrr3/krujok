@@ -1,0 +1,92 @@
+body.dark-theme {
+  background: #222325;
+  color: #fff;
+  .hp__tabs button {
+    color: #fff;
+  }
+  .card {
+    background: #454648;
+  }
+
+
+  .addCardForm__head {
+    background: #454648;
+  }
+  .addCardForm__photo label {
+    border: 1px solid #fff;
+  }
+  .addCardForm__photo svg {
+    path {
+      fill: #fff;
+    }
+  }
+
+  input:not([type=submit]), textarea, select {
+    border: 1px solid #fff;
+    color: #fff;
+  }
+
+  .addCardForm__time {
+    background: #454648;
+  }
+
+  .user {
+    background: #454648;
+  }
+
+
+  .user__name {
+    color: #fff;
+  }
+
+  .addCardSearch__btn {
+    background: #454648;
+  }
+
+  .btn-exit {
+    color: #fff;
+  }
+
+  .queue-info {
+    background: #454648;
+  }
+  .todo__main {
+    background: #454648;
+  }
+  .todo__body {
+    background: #454648;
+  }
+  .todo__name {
+    color: #fff;
+  }
+  .sign-up__info {
+    background: #454648;
+  }
+  .sign-up__photo {
+    border: 1px solid #fff;
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+  .block {
+    background: #454648;
+  }
+  .calendar__info {
+    color: #fff;
+  }
+  .btn-white {
+    color: #fff;
+  }
+  .booking__toggle h4 {
+    color: #fff;
+  }
+  .booking__btn-group button:not(.btn) {
+    background: #454648;
+  }
+
+  .modal-content {
+    background: #454648;
+  }
+}

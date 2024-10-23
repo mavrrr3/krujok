@@ -16,7 +16,7 @@
           'green': status === 1,
           'red': status === 2,
           'blue': status === 3
-        }">
+        }" style="margin: 0;">
           <span v-if="status === 1">Подтвердил</span>
           <span v-else-if="status === 2">Не подтвердил</span>
           <span v-else-if="status === 3">Отправлено</span>
